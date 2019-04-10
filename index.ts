@@ -10,6 +10,7 @@ const l = console.log;
 //     return new Observable((observer) => {
 //       return source.subscribe({
 //         next(x) {
+//           l(x);
 //           observer.next( x.toUpperCase() )
 //         }
 //       })
@@ -39,14 +40,14 @@ const l = console.log;
 //   .subscribe(val => l(val))
 
 
-// const myMap = mapFn => 
-//   (source: Observable<any>) => {
-//     return new Observable(observer => {
-//       return source.subscribe(val => 
-//         observer.next(mapFn(val))
-//       )
-//     })
-//   }
+const myMap = mapFn => 
+  (source: Observable<any>) => {
+    return new Observable(observer => {
+      return source.subscribe(val => 
+        observer.next(mapFn(val))
+      )
+    })
+  }
     
 // from([1, 2, 3])
 //   .pipe(myMap(val => val * val))
